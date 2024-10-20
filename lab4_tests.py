@@ -61,14 +61,16 @@ class TestCases(unittest.TestCase):
     # Part 4
     def test_distance(self):
         point1 = data.Point(3, 4)
-        expected = 5
-        result = lab4.distance(point1)
+        point2 = data.Point(3, 4)
+        expected = 0
+        result = lab4.distance(point1, point2)
         self.assertEqual(expected, result)
 
     def test_distance2(self):
         point1 = data.Point(7, 8)
-        expected = 10.63014581273465
-        result = lab4.distance(point1)
+        point2 = data.Point(3, 4)
+        expected = 5.6568542494
+        result = lab4.distance(point1, point2)
         self.assertAlmostEqual(expected, result)
 
 
@@ -80,7 +82,7 @@ class TestCases(unittest.TestCase):
         result = lab4.manhattan_distance([point1, point2])
         self.assertEqual(expected, result)
 
-    def test_manhattan_distance(self):
+    def test_manhattan_distance2(self):
         point1 = data.Point(-5, 7)
         point2 = data.Point(4, -8)
         expected = 24
@@ -88,8 +90,22 @@ class TestCases(unittest.TestCase):
         self.assertEqual(expected, result)
 
     # Part 6
+    def test_distance_all(self):
+        point1 = data.Point(3, 2)
+        point2 = data.Point(7, 6)
+        point3 = data.Point(5, 4)
+        expected = [3.605551275463989, 9.219544457292887, 6.4031242374328485]
+        result = lab4.distance_all([point1, point2, point3])
+        self.assertAlmostEqual(expected, result)
 
-
+    def test_distance_all2(self):
+        point1 = data.Point(0, 0)
+        point2 = data.Point(1, 1)
+        point3 = data.Point(6, 8)
+        point4 = data.Point(8, 10)
+        expected = [0.0, 1.4142135623730951, 10.0, 12.806248474865697]
+        result = lab4.distance_all([point1, point2, point3, point4])
+        self.assertAlmostEqual(expected, result)
 
 
 

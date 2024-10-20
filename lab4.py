@@ -27,12 +27,13 @@ def are_in_positive_quadrant(oglist: list) -> list:
     return list_new
 
 # Part 4
-def distance(parameters: list) -> float:
+def distance(point1: float, point2: float) -> float:
     from math import sqrt
-    x2 = parameters.x**2
-    y2 = parameters.y**2
+    x2 = (point1.x-point2.x)**2
+    y2 = (point1.y-point2.y)**2
     Euclidean_distance = sqrt(x2+y2)
     return Euclidean_distance
+
 
 # Part 5
 def manhattan_distance(parameters: list) -> float:
@@ -42,19 +43,20 @@ def manhattan_distance(parameters: list) -> float:
     return manhattan
 
 # Part 6
-def distance_all(parameters: list) -> list:
-   all_distances = []
-   origin = data.Point(0,0)
-   for i in range(len(parameters)):
-        origin_distance = distance([parameters[i], origin])
-        all_distances.append(origin_distance)
-   return all_distances
+def distance_all(predistance: list) -> list:
+    list_of_distances = []
+    point1 = data.Point(0,0)
+    for point in predistance:
+        distances = distance(point, point1)
+        list_of_distances.append(distances)
+    return list_of_distances
 
-point1 = data.Point(3, 4)
-point2 = data.Point(1,1)
-point3 = data.Point(0,0)
+point1 = data.Point(0, 0)
+point2 = data.Point(1, 1)
+point3 = data.Point(6, 8)
+point4 = data.Point(8, 10)
 
-print(distance_all([point1, point2, point3]))
+print(distance_all([point1, point2, point3, point4]))
 
 
 
